@@ -2,15 +2,15 @@
 <?php
 
 # default values for externally definable parameters 
-$cfg['ftp-host'] = "10.0.0.1";				# storage ftp hostname.
-$cfg['ftp-path'] = "";								# location of logfiles on the storage ftp
-$cfg['ftp-username'] = "username";					# login for storage ftp.
+$cfg['ftp-host'] = "10.0.0.1";					# storage ftp hostname.
+$cfg['ftp-path'] = "";						# location of logfiles on the storage ftp
+$cfg['ftp-username'] = "username";				# login for storage ftp.
 $cfg['ftp-password'] = "secret_password";			# password for storage ftp.
-$cfg['log-age'] = 336;								# log age threshold in hours.	
-$cfg['logfile-age'] = 16;							# logfile age threshold in days.
-$cfg['min-log-entry'] = 120;						# minimal size of logfile entry in bytes.
-$cfg['data-source'] = 'log';						# script may get data either from text 'log' or from 'filename'
-$cfg['filename-pattern-ok'] = "OK";					# Successfull backup flag for filename mode
+$cfg['log-age'] = 336;						# log age threshold in hours.	
+$cfg['logfile-age'] = 16;					# logfile age threshold in days.
+$cfg['min-log-entry'] = 120;					# minimal size of logfile entry in bytes.
+$cfg['data-source'] = 'log';					# script may get data either from text 'log' or from 'filename'
+$cfg['filename-pattern-ok'] = "OK";				# Successfull backup flag for filename mode
 $cfg['filename-pattern-warn'] = "WARN";				# Warning flag for filename mode
 
 # initial variables
@@ -76,7 +76,7 @@ if ( $cfg['data-source'] == 'log'  ) {
 			# Filename date extraction pattern.
 			# here we define log filename pattern, e.g. ./fzs-2022-09-01.log
 			# date in the log filename is used to list and filter logfile by its age 
-			# Note that file attributes are ignored.
+			# Note that file attributes are ignored. Using Regex syntax.
 			# 
 			$date_pattern = '/(\d{4}-\d{2}-\d{2})/';
 			preg_match_all($date_pattern, $fname, $res, PREG_PATTERN_ORDER);
@@ -106,7 +106,7 @@ if ( $cfg['data-source'] == 'log'  ) {
 	# Here we are trying to find the specific entry that fits the standard log record for successful STOR operation. 
 	# Example:
 	# (000051) 01.09.2022 2:22:55 - ftp_user (10.0.1.2)> 226 Successfully transferred "/path/to/file/filename_pattern_2022_09_01_010000_6539791.bak"
-	# Note that line endings (\r and \n) should always be added for the lazy search to work properly.
+	# Note that line endings (\r and \n) should always be added for the lazy search to work properly. Using Regex syntax.
 
 	$pattern = '/\(\d{5,7}\) (.+?) - (.+?) \((.+?)\)\> 226 Successfully transferred \"(.+?)'.$cfg['bak-file-pattern'].'(.+?)\"\r\n/';
 	preg_match_all($pattern, $full_log, $lines, PREG_PATTERN_ORDER);
@@ -140,7 +140,7 @@ if ( $cfg['data-source'] == 'log'  ) {
 	foreach ($loglist as &$fname) {
 		# Filename date extraction pattern for filename mode.
 		# here we define file or folder name pattern, e.g. ./FLAG_16.09.2022_22-13-05_OK
-		# backup date and status are extracted from the flag folder or filename.
+		# backup date and status are extracted from the flag folder or filename. Using Regex syntax.
 		# 
 		$date_pattern = '/(\d{2})\.(\d{2})\.(\d{4})_(\d{2})-(\d{2})-(\d{2})_(.+?)$/';
 		preg_match_all($date_pattern, $fname, $res, PREG_PATTERN_ORDER);
