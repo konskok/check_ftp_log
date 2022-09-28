@@ -28,7 +28,7 @@ record indicating successful completion of the upload process:
 226 Successfully transferred "/path/to/file/filename_pattern_2022_09_01_010000_6539791.bak"
 ```
 
-MODE LOG. Command line parameters description:
+**Mode LOG.** Command line parameters description:
 ```
 --bak-file-pattern  Backup filename pattern to search for. 
 --log-age Backup age threshold (in hours), default value is 336. 
@@ -46,7 +46,7 @@ If there were no appropriate record found, CRITICAL status returned.
 ```
 Flag file is supposed to be created by an external application that does not support writing conventional log files.
 
-MODE FILENAME. Command line parameters description:
+**Mode FILENAME**. Command line parameters description:
 ```
 --bak-file-pattern Flag filename pattern to search for. 
 --log-age Backup age threshold (in hours), default value is 336. 
