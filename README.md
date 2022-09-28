@@ -18,37 +18,45 @@ Usage example:
 ```
 
 ## Modes
-Script may run in one of two modes set trough command line parameter --data-source [log|filename].
+Script may run in one of two modes set trough command line parameter **--data-source [log|filename]**.
 
-1. --data-source log [Default]. Fetching log files from FTP server via ftp protocol, parsing text and searchng for the appropriate 
+1. **--data-source log [Default]**. Fetching log files from FTP server via ftp protocol, parsing text and searchng for the appropriate 
 record indicating successful completion of the upload process:
 
 ```
 (000051) 01.09.2022 2:22:55 - ftp_user (10.0.1.2)> 
 226 Successfully transferred "/path/to/file/filename_pattern_2022_09_01_010000_6539791.bak"
 ```
-Backup filename pattern is set with --bak-file-pattern parameter. Backup age threshold (in hours) is set with --log-age parameter, default value is 336. 
-Log file age limit (in days) can be set with --logfile-age parameter, default value is 16. 
-List of log files in the ftp user root folder is used by default. Relative path can be set with --ftp-path parameter.
 
-If the record was found in log, and it is newer than --log-age threshold, OK status returned.
-If the record was found in log, but it is older then --log-age threshold, WARNING status returned.
+**--bak-file-pattern** Backup filename pattern to search for. 
+**--log-age** Backup age threshold (in hours), default value is 336. 
+**--logfile-age** Log file age limit (in days), default value is 16. 
+**--ftp-path** Relative path to ftp directory. Ftp user root folder is used by default.
+
+If the record was found in log, and it is newer than **--log-age** threshold, OK status returned.
+If the record was found in log, but it is older then **--log-age** threshold, WARNING status returned.
 If there were no appropriate record found, CRITICAL status returned.
 
 
-2. --data-source filename. Listing filenames from the given folder on ftp and searching for the flag filename. Example:
+2. **--data-source filename**. Listing filenames from the given folder on ftp and searching for the flag filename. Example:
 ```
 ./FLAG_16.09.2022_22-13-05_OK
 ```
+
 Flag file is supposed to be created by an external application that does not support writing conventional log files.
-Filename pattern is set with --bak-file-pattern parameter. Backup age threshold (in hours) is set with --log-age parameter, default value is 336. 
-Result flag string can be changed with --filename-pattern-ok and --filename-pattern-warn parameters, default values are OK and WARN respectively.
-List of flag files in the ftp user root folder is used by default. Relative path can be set with --ftp-path parameter.
+**--bak-file-pattern** Flag filename pattern to search for. 
+**--log-age** Backup age threshold (in hours), default value is 336. 
+**--filename-pattern-ok** and **--filename-pattern-warn** are result flag strings, default values are OK and WARN respectively.
+**--ftp-path** Relative path to ftp directory. Ftp user root folder is used by default.
  
-If OK flag file was found, and it is newer than --log-age threshold, OK status returned.
-If OK flag file was found, but it is older then --log-age threshold, WARNING status returned.
+If OK flag file was found, and it is newer than **--log-age** threshold, OK status returned.
+If OK flag file was found, but it is older then **--log-age** threshold, WARNING status returned.
 If WARN flag file was found, WARNING status returned.
 If there were no appropriate filename found, CRITICAL status returned.
+
+
+
+
 
 ## License
 
