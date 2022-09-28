@@ -13,7 +13,8 @@ supposed to be placed in nagios plugins directory, i.e.:
 
 Usage example:
 ```
-./check_ftp_log.php --ftp-host 10.0.1.1 --bak-file-pattern web_storage_ --ftp-username username --ftp-password secret_password --log-age 36
+./check_ftp_log.php 
+--ftp-host 10.0.1.1 --bak-file-pattern web_storage_ --ftp-username username --ftp-password secret_password --log-age 36
 ```
 
 ## Modes
@@ -23,7 +24,8 @@ Script may run in one of two modes set trough command line parameter --data-sour
 record indicating successful completion of the upload process:
 
 ```
-(000051) 01.09.2022 2:22:55 - ftp_user (10.0.1.2)> 226 Successfully transferred "/path/to/file/filename_pattern_2022_09_01_010000_6539791.bak"
+(000051) 01.09.2022 2:22:55 - ftp_user (10.0.1.2)> 
+226 Successfully transferred "/path/to/file/filename_pattern_2022_09_01_010000_6539791.bak"
 ```
 Backup filename pattern is set with --bak-file-pattern parameter. Backup age threshold (in hours) is set with --log-age parameter, default value is 336. 
 Log file age limit (in days) can be set with --logfile-age parameter, default value is 16. 
