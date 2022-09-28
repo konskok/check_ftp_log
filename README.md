@@ -29,12 +29,18 @@ record indicating successful completion of the upload process:
 ```
 
 **--bak-file-pattern** Backup filename pattern to search for. 
+
 **--log-age** Backup age threshold (in hours), default value is 336. 
+
 **--logfile-age** Log file age limit (in days), default value is 16. 
+
 **--ftp-path** Relative path to ftp directory. Ftp user root folder is used by default.
 
+
 If the record was found in log, and it is newer than **--log-age** threshold, OK status returned.
+
 If the record was found in log, but it is older then **--log-age** threshold, WARNING status returned.
+
 If there were no appropriate record found, CRITICAL status returned.
 
 
@@ -44,15 +50,24 @@ If there were no appropriate record found, CRITICAL status returned.
 ```
 
 Flag file is supposed to be created by an external application that does not support writing conventional log files.
+
 **--bak-file-pattern** Flag filename pattern to search for. 
+
 **--log-age** Backup age threshold (in hours), default value is 336. 
+
 **--filename-pattern-ok** and **--filename-pattern-warn** are result flag strings, default values are OK and WARN respectively.
+
 **--ftp-path** Relative path to ftp directory. Ftp user root folder is used by default.
+
  
 If OK flag file was found, and it is newer than **--log-age** threshold, OK status returned.
+
 If OK flag file was found, but it is older then **--log-age** threshold, WARNING status returned.
+
 If WARN flag file was found, WARNING status returned.
+
 If there were no appropriate filename found, CRITICAL status returned.
+
 
 
 
