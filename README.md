@@ -28,6 +28,8 @@ record indicating successful completion of the upload process:
 226 Successfully transferred "/path/to/file/filename_pattern_2022_09_01_010000_6539791.bak"
 ```
 
+MODE LOG. Command line parameters description:
+```
 **--bak-file-pattern** Backup filename pattern to search for. 
 **--log-age** Backup age threshold (in hours), default value is 336. 
 **--logfile-age** Log file age limit (in days), default value is 16. 
@@ -36,14 +38,17 @@ record indicating successful completion of the upload process:
 If the record was found in log, and it is newer than **--log-age** threshold, OK status returned.
 If the record was found in log, but it is older then **--log-age** threshold, WARNING status returned.
 If there were no appropriate record found, CRITICAL status returned.
+```
 
 
 **--data-source filename**. Listing filenames from the given folder on ftp and searching for the flag filename. Example:
 ```
 ./FLAG_16.09.2022_22-13-05_OK
 ```
-
 Flag file is supposed to be created by an external application that does not support writing conventional log files.
+
+MODE FILENAME. Command line parameters description:
+```
 **--bak-file-pattern** Flag filename pattern to search for. 
 **--log-age** Backup age threshold (in hours), default value is 336. 
 **--filename-pattern-ok** and **--filename-pattern-warn** are result flag strings, default values are OK and WARN respectively.
@@ -53,6 +58,7 @@ If OK flag file was found, and it is newer than **--log-age** threshold, OK stat
 If OK flag file was found, but it is older then **--log-age** threshold, WARNING status returned.
 If WARN flag file was found, WARNING status returned.
 If there were no appropriate filename found, CRITICAL status returned.
+```
 
 
 
