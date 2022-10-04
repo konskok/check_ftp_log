@@ -5,6 +5,12 @@
 # Max.Fischer <dev@monologic.ru>
 # Tested on CentOS GNU/Linux 6.5 with Icinga r2.6.3-1
 # 
+# supposed to be placed in nagios plugins directory, i.e.:
+# /usr/lib/nagios/plugins/check_ftp_log.php - CHMOD 755
+#
+# Usage example:
+# ./check_ftp_log.php --ftp-host 10.0.1.1 --bak-file-pattern web_storage_ --ftp-username username --ftp-password secret_password --log-age 36
+#
 # ICINGA CONFIG DEFINITIONS:
 # Configure Host
 # object Host "www.monitored-website.com" {
