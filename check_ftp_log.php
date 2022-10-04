@@ -1,6 +1,7 @@
 #!/usr/bin/php
 <?php
 
+# ICINGA CONFIG DEFINITIONS:
 # Configure Host
 # object Host "www.monitored-website.com" {
 #	import "generic-host"
