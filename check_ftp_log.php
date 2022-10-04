@@ -1,6 +1,8 @@
 #!/usr/bin/php
 <?php
-
+# Icinga Plugin Script (Check Command). Check results of the ftp backup by reading and analysing ftp log files.
+# https://github.com/xyhtac/check_ftp_log/
+# 
 # ICINGA CONFIG DEFINITIONS:
 # Configure Host
 # object Host "www.monitored-website.com" {
