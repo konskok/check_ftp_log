@@ -1,6 +1,53 @@
 #!/usr/bin/php
 <?php
 
+# Configure Host
+# object Host "www.monitored-website.com" {
+#	import "generic-host"
+#	address = "11.12.13.14"
+#	vars.bak_file_pattern["FTP Backup Storage"] = "www.monitored-website.com_storage-"
+#	vars.bak_file_pattern["FTP Backup Code"] = "www.monitored-website.com_code-"
+#	vars.bak_file_pattern["FTP Backup Database"] = "www.monitored-website.com_database-"
+#	vars.log_age = "32"
+#}
+#
+#Configure service
+#apply Service for (identifier => pattern in host.vars.bak_file_pattern) {
+#	display_name = identifier
+#	check_interval = 3h
+#	retry_interval = 30m
+#	check_command = "check_ftp_log"
+#	vars.ftp_host = "10.0.0.1"
+#	vars.ftp_username = "username"
+#	vars.ftp_password = "secret_password"
+#	vars.logfile_age = "14"
+#	vars.log_age = host.vars.log_age
+#	vars.data_source = host.vars.data_source
+#	vars.ftp_path = host.vars.ftp_path
+#	vars.filename_pattern_ok = host.vars.filename_pattern_ok
+#	vars.filename_pattern_warn = host.vars.filename_pattern_warn
+#	vars.bak_file_pattern = pattern
+#}
+#
+#Configure Command
+#object CheckCommand "check_ftp_log" {
+#	import "plugin-check-command"
+#	command = [ PluginDir + "/check_ftp_log.php" ]
+#	arguments = {
+#		"--ftp-host" = "$ftp_host$"
+#		"--ftp-username" = "$ftp_username$"
+#		"--ftp-password" = "$ftp_password$"
+#		"--log-age" = "$log_age$"
+#		"--logfile-age" = "$logfile_age$"
+#		"--bak-file-pattern" = "$bak_file_pattern$"
+#		"--data-source" = "$data_source$"
+#		"--ftp-path" = "$ftp_path$"
+#		"--filename-pattern-ok" = "$filename_pattern_ok$"
+#		"--filename-pattern-warn" = "$filename_pattern_warn$"
+#	}
+#}
+
+
 # default values for externally definable parameters 
 $cfg['ftp-host'] = "10.0.0.1";					# storage ftp hostname.
 $cfg['ftp-path'] = "";						# location of logfiles on the storage ftp
