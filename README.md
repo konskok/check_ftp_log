@@ -77,8 +77,8 @@ object Host "www.monitored-website.com" {
 ```
 apply Service for (identifier => pattern in host.vars.bak_file_pattern) {
 	display_name = identifier
-	check_interval = 3h
-	retry_interval = 30m
+	check_interval = 1h
+	retry_interval = 10m
 	check_command = "check_ftp_log"
 	vars.ftp_host = "10.0.0.1"
 	vars.ftp_username = "username"
